@@ -1,6 +1,6 @@
 # DnaToProtein
 
-Hi everyone, I coded from stratch a way to extract Protein from Coronavirus Genome.
+Hi everyone, I coded from scratch a way to extract Protein from Coronavirus Genome.
 You could find on the tool the "Program.cs" files which contains all the code.
 
 You will see different methods and these are processes names to transform your DNA to Protein.
