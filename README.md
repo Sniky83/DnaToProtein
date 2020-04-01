@@ -1,4 +1,4 @@
-# DnaToProtein
+# DNA to Protein
 
 Hi everyone, I coded from scratch a way to extract Proteins from SARS-CoV-2 complete Genome (the currently epidemic Coronavirus).
 I start with the DNA of the coronavirus and I transcript nucleotides to an RNA Messenger.
