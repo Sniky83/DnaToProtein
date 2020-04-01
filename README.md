@@ -1,11 +1,9 @@
-# DNA to Protein
+# DNA To Protein
 
 Hi everyone, I coded from scratch a way to extract Proteins from SARS-CoV-2 complete Genome (the currently epidemic Coronavirus).
-I start with the DNA of the coronavirus and I transcript nucleotides to an RNA Messenger.
-
-When I have the RNA Messenger I translate the RNA to a new form for the last part.
-
-For the last part I have the result of the translation of my RNA and I transfer it to an array of amino acids which are gonna be my final protein.
+- I start with the DNA of the coronavirus and I transcript nucleotides to an RNA Messenger.
+- When I have the RNA Messenger I translate the RNA to a new form for the last part.
+- For the last part I have the result of the translation of my RNA and I transfer it to an array of amino acids which are gonna be my final protein.
 
 You could find on the tool the "Program.cs" file which contains all the code.
 
