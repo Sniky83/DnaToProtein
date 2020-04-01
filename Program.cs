@@ -21,28 +21,40 @@ public class Program
 		ORF8_protein = new String(RnaToAminoAcid(rna_translation, 27893, 28259).ToArray());
 		nucleocapsid_phosphoprotein = new String(RnaToAminoAcid(rna_translation, 28273, 29533).ToArray());
 		ORF10_protein = new String(RnaToAminoAcid(rna_translation, 29557, 29674).ToArray());
+		Console.WriteLine("RNA MESSENGER :");
 		Console.WriteLine(rna_messenger);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("RNA TRANSLATION :");
 		Console.WriteLine(rna_translation);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF1AB POLYPROTEIN :");
 		Console.WriteLine(orf1ab_polyprotein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("SURFACE GLYCOPROTEIN :");
 		Console.WriteLine(surface_glycoprotein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF3A PROTEIN :");
 		Console.WriteLine(ORF3a_protein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ENVELOPE PROTEIN :");
 		Console.WriteLine(envelope_protein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("MEMBRANE GLYCOPROTEIN :");
 		Console.WriteLine(membrane_glycoprotein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF6 PROTEIN :");
 		Console.WriteLine(ORF6_protein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF7A PROTEIN :");
 		Console.WriteLine(ORF7a_protein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF8 PROTEIN :");
 		Console.WriteLine(ORF8_protein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("NUCLEOCAPSID PHOSPHOPROTEIN :");
 		Console.WriteLine(nucleocapsid_phosphoprotein);
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("ORF10 PROTEIN :");
 		Console.WriteLine(ORF10_protein);
 		Console.ReadKey();
 	}
@@ -69,7 +81,7 @@ public class Program
 					rna_messenger.Add('c');
 					break;
 				default:
-					Console.WriteLine("You have an error in you're DNA nucleotides at the position : {i} -> '{dna_covid19[i]}' you necessarily have one of these letters : 'A,T,C,G' otherwise it's not DNA.");
+					Console.WriteLine("You have an error in your DNA nucleotides at position : {i} -> '{dna_covid19[i]}' you necessarily have one of these letters : 'A,T,C,G' otherwise it's not DNA.");
 					return rna_messenger;
 			}
 		}
@@ -104,8 +116,12 @@ public class Program
 	public static List<char> RnaToAminoAcid(string rna_translated, int start, int end)
 	{
 		List<char> amino_acid = new List<char>();
+		//I created a boolean to optimize the code when an amino acid is found
+		//we are not trying to test other methods and go directly to the break;
+		//to continue the loop
+		bool status = false;
 
-		for (int i = start; start < end; i = i+3)
+		for (int i = start; i < end; i = i+3)
 		{
 			if (i == (end - 3))
 				break;
@@ -118,88 +134,91 @@ public class Program
 					//There are comments bellow because there are no amino acids for these
 					//nucleotides combinations you should look at the picture in the README
 					//file if you want more information
+					status =
+					Condition(arr, amino_acid, 'u', 'g', 'L') ||
+					Condition(arr, amino_acid, 'u', 'a', 'L') ||
+					Condition(arr, amino_acid, 'u', 'c', 'F') ||
+					Condition(arr, amino_acid, 'u', 'u', 'F') ||
 
-					Condition(arr, amino_acid, 'u', 'g', 'L');
-					Condition(arr, amino_acid, 'u', 'a', 'L');
-					Condition(arr, amino_acid, 'u', 'c', 'F');
-					Condition(arr, amino_acid, 'u', 'u', 'F');
+					Condition(arr, amino_acid, 'g', 'g', 'W') ||
+					//Condition(arr, amino_acid, 'g', 'a', '\0') ||
+					Condition(arr, amino_acid, 'g', 'c', 'C') ||
+					Condition(arr, amino_acid, 'g', 'u', 'C') ||
 
-					Condition(arr, amino_acid, 'g', 'g', 'W');
-					//Condition(arr, amino_acid, 'g', 'a', '\0');
-					Condition(arr, amino_acid, 'g', 'c', 'C');
-					Condition(arr, amino_acid, 'g', 'u', 'C');
+					Condition(arr, amino_acid, 'c', 'g', 'S') ||
+					Condition(arr, amino_acid, 'c', 'a', 'S') ||
+					Condition(arr, amino_acid, 'c', 'c', 'S') ||
+					Condition(arr, amino_acid, 'c', 'u', 'S') ||
 
-					Condition(arr, amino_acid, 'c', 'g', 'S');
-					Condition(arr, amino_acid, 'c', 'a', 'S');
-					Condition(arr, amino_acid, 'c', 'c', 'S');
-					Condition(arr, amino_acid, 'c', 'u', 'S');
-
-					//Condition(arr, amino_acid, 'a', 'g', '\0');
-					//Condition(arr, amino_acid, 'a', 'a', '\0');
-					Condition(arr, amino_acid, 'a', 'c', 'Y');
+					//Condition(arr, amino_acid, 'a', 'g', '\0') ||
+					//Condition(arr, amino_acid, 'a', 'a', '\0') ||
+					Condition(arr, amino_acid, 'a', 'c', 'Y') ||
 					Condition(arr, amino_acid, 'a', 'u', 'Y');
 					break;
 				case 'a':
-					Condition(arr, amino_acid, 'u', 'g', 'M');
-					Condition(arr, amino_acid, 'u', 'a', 'I');
-					Condition(arr, amino_acid, 'u', 'c', 'I');
-					Condition(arr, amino_acid, 'u', 'u', 'I');
+					status =
+					Condition(arr, amino_acid, 'u', 'g', 'M') ||
+					Condition(arr, amino_acid, 'u', 'a', 'I') ||
+					Condition(arr, amino_acid, 'u', 'c', 'I') ||
+					Condition(arr, amino_acid, 'u', 'u', 'I') ||
 
-					Condition(arr, amino_acid, 'g', 'g', 'R');
-					Condition(arr, amino_acid, 'g', 'a', 'R');
-					Condition(arr, amino_acid, 'g', 'c', 'S');
-					Condition(arr, amino_acid, 'g', 'u', 'S');
+					Condition(arr, amino_acid, 'g', 'g', 'R') ||
+					Condition(arr, amino_acid, 'g', 'a', 'R') ||
+					Condition(arr, amino_acid, 'g', 'c', 'S') ||
+					Condition(arr, amino_acid, 'g', 'u', 'S') ||
 
-					Condition(arr, amino_acid, 'c', 'g', 'T');
-					Condition(arr, amino_acid, 'c', 'a', 'T');
-					Condition(arr, amino_acid, 'c', 'c', 'T');
-					Condition(arr, amino_acid, 'c', 'u', 'T');
+					Condition(arr, amino_acid, 'c', 'g', 'T') ||
+					Condition(arr, amino_acid, 'c', 'a', 'T') ||
+					Condition(arr, amino_acid, 'c', 'c', 'T') ||
+					Condition(arr, amino_acid, 'c', 'u', 'T') ||
 
-					Condition(arr, amino_acid, 'a', 'g', 'K');
-					Condition(arr, amino_acid, 'a', 'a', 'K');
-					Condition(arr, amino_acid, 'a', 'c', 'N');
+					Condition(arr, amino_acid, 'a', 'g', 'K') ||
+					Condition(arr, amino_acid, 'a', 'a', 'K') ||
+					Condition(arr, amino_acid, 'a', 'c', 'N') ||
 					Condition(arr, amino_acid, 'a', 'u', 'N');
 					break;
 				case 'g':
-					Condition(arr, amino_acid, 'u', 'g', 'V');
-					Condition(arr, amino_acid, 'u', 'a', 'V');
-					Condition(arr, amino_acid, 'u', 'c', 'V');
-					Condition(arr, amino_acid, 'u', 'u', 'V');
+					status =
+					Condition(arr, amino_acid, 'u', 'g', 'V') ||
+					Condition(arr, amino_acid, 'u', 'a', 'V') ||
+					Condition(arr, amino_acid, 'u', 'c', 'V') ||
+					Condition(arr, amino_acid, 'u', 'u', 'V') ||
 
-					Condition(arr, amino_acid, 'g', 'g', 'G');
-					Condition(arr, amino_acid, 'g', 'a', 'G');
-					Condition(arr, amino_acid, 'g', 'c', 'G');
-					Condition(arr, amino_acid, 'g', 'u', 'G');
+					Condition(arr, amino_acid, 'g', 'g', 'G') ||
+					Condition(arr, amino_acid, 'g', 'a', 'G') ||
+					Condition(arr, amino_acid, 'g', 'c', 'G') ||
+					Condition(arr, amino_acid, 'g', 'u', 'G') ||
 
-					Condition(arr, amino_acid, 'c', 'g', 'A');
-					Condition(arr, amino_acid, 'c', 'a', 'A');
-					Condition(arr, amino_acid, 'c', 'c', 'A');
-					Condition(arr, amino_acid, 'c', 'u', 'A');
+					Condition(arr, amino_acid, 'c', 'g', 'A') ||
+					Condition(arr, amino_acid, 'c', 'a', 'A') ||
+					Condition(arr, amino_acid, 'c', 'c', 'A') ||
+					Condition(arr, amino_acid, 'c', 'u', 'A') ||
 
-					Condition(arr, amino_acid, 'a', 'g', 'E');
-					Condition(arr, amino_acid, 'a', 'a', 'E');
-					Condition(arr, amino_acid, 'a', 'c', 'D');
+					Condition(arr, amino_acid, 'a', 'g', 'E') ||
+					Condition(arr, amino_acid, 'a', 'a', 'E') ||
+					Condition(arr, amino_acid, 'a', 'c', 'D') ||
 					Condition(arr, amino_acid, 'a', 'u', 'D');
 					break;
 				case 'c':
-					Condition(arr, amino_acid, 'u', 'g', 'L');
-					Condition(arr, amino_acid, 'u', 'a', 'L');
-					Condition(arr, amino_acid, 'u', 'c', 'L');
-					Condition(arr, amino_acid, 'u', 'u', 'L');
+					status =
+					Condition(arr, amino_acid, 'u', 'g', 'L') ||
+					Condition(arr, amino_acid, 'u', 'a', 'L') ||
+					Condition(arr, amino_acid, 'u', 'c', 'L') ||
+					Condition(arr, amino_acid, 'u', 'u', 'L') ||
 
-					Condition(arr, amino_acid, 'g', 'g', 'R');
-					Condition(arr, amino_acid, 'g', 'a', 'R');
-					Condition(arr, amino_acid, 'g', 'c', 'R');
-					Condition(arr, amino_acid, 'g', 'u', 'R');
+					Condition(arr, amino_acid, 'g', 'g', 'R') ||
+					Condition(arr, amino_acid, 'g', 'a', 'R') ||
+					Condition(arr, amino_acid, 'g', 'c', 'R') ||
+					Condition(arr, amino_acid, 'g', 'u', 'R') ||
 
-					Condition(arr, amino_acid, 'c', 'g', 'P');
-					Condition(arr, amino_acid, 'c', 'a', 'P');
-					Condition(arr, amino_acid, 'c', 'c', 'P');
-					Condition(arr, amino_acid, 'c', 'u', 'P');
+					Condition(arr, amino_acid, 'c', 'g', 'P') ||
+					Condition(arr, amino_acid, 'c', 'a', 'P') ||
+					Condition(arr, amino_acid, 'c', 'c', 'P') ||
+					Condition(arr, amino_acid, 'c', 'u', 'P') ||
 
-					Condition(arr, amino_acid, 'a', 'g', 'Q');
-					Condition(arr, amino_acid, 'a', 'a', 'Q');
-					Condition(arr, amino_acid, 'a', 'c', 'H');
+					Condition(arr, amino_acid, 'a', 'g', 'Q') ||
+					Condition(arr, amino_acid, 'a', 'a', 'Q') ||
+					Condition(arr, amino_acid, 'a', 'c', 'H') ||
 					Condition(arr, amino_acid, 'a', 'u', 'H');
 					break;
 			}
@@ -207,14 +226,16 @@ public class Program
 		return amino_acid;
 	}
 
-	public static void Condition(char[] nucleotide, List<char> amino_acid, char expected_nucleotide1, char expected_nucleotide2, char new_amino_acid)
+	public static bool Condition(char[] nucleotide, List<char> amino_acid, char expected_nucleotide1, char expected_nucleotide2, char new_amino_acid)
 	{
 		if (nucleotide[0] == expected_nucleotide1)
 		{
 			if (nucleotide[1] == expected_nucleotide2)
 			{
 				amino_acid.Add(new_amino_acid);
+				return true;
 			}
 		}
+		return false;
 	}
 }
