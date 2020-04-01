@@ -5,6 +5,8 @@ You could find on the tool the "Program.cs" files which contains all the code.
 
 You will see different methods and these are processes names to transform your DNA to Protein.
 
+The final link is really important because you could see that scientists results are the same than in the console logs code from "Program.cs".
+
 References :
 - https://www.youtube.com/watch?v=gG7uCskUOrA
 - https://www.youtube.com/watch?v=ibuLXGBI4Kg
