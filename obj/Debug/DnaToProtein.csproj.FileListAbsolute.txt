@@ -4,3 +4,9 @@ E:\Bureau\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.exe
 E:\Bureau\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.pdb
 E:\Bureau\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.exe
 E:\Bureau\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.pdb
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.exe.config
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.exe
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.pdb
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.csprojAssemblyReference.cache
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.exe
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.pdb

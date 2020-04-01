@@ -69,7 +69,7 @@ public class Program
 					rna_messenger.Add('c');
 					break;
 				default:
-					Console.WriteLine("Aucune autre lettre n'est attendue. Vous avez une erreur dans votre ADN au caractère {i} -> '{dna_covid19[i]}' normalement vous êtes censé avoir un 'A,C,T ou G'");
+					Console.WriteLine("You have an error in you're DNA nucleotides at the position : {i} -> '{dna_covid19[i]}' you necessarily have one of these letters : 'A,T,C,G' otherwise it's not DNA.");
 					return rna_messenger;
 			}
 		}
@@ -107,20 +107,25 @@ public class Program
 
 		for (int i = start; start < end; i = i+3)
 		{
-			if (i == end - 3)
+			if (i == (end - 3))
 				break;
+
+			char[] arr = { rna_translated[i + 1], rna_translated[i + 2] };
 
 			switch (rna_translated[i])
 			{
 				case 'u':
-					char[] arr = { rna_translated[i + 1], rna_translated[i + 2] };
+					//There are comments bellow because there are no amino acids for these
+					//nucleotides combinations you should look at the picture in the README
+					//file if you want more information
+
 					Condition(arr, amino_acid, 'u', 'g', 'L');
 					Condition(arr, amino_acid, 'u', 'a', 'L');
 					Condition(arr, amino_acid, 'u', 'c', 'F');
 					Condition(arr, amino_acid, 'u', 'u', 'F');
 
 					Condition(arr, amino_acid, 'g', 'g', 'W');
-					//Condition(arr, amino_acid, 'g', 'a', 'L');
+					//Condition(arr, amino_acid, 'g', 'a', '\0');
 					Condition(arr, amino_acid, 'g', 'c', 'C');
 					Condition(arr, amino_acid, 'g', 'u', 'C');
 
@@ -129,89 +134,86 @@ public class Program
 					Condition(arr, amino_acid, 'c', 'c', 'S');
 					Condition(arr, amino_acid, 'c', 'u', 'S');
 
-					//Condition(arr, amino_acid, 'a', 'g', 'L');
-					//Condition(arr, amino_acid, 'a', 'a', 'L');
+					//Condition(arr, amino_acid, 'a', 'g', '\0');
+					//Condition(arr, amino_acid, 'a', 'a', '\0');
 					Condition(arr, amino_acid, 'a', 'c', 'Y');
 					Condition(arr, amino_acid, 'a', 'u', 'Y');
 					break;
 				case 'a':
-					char[] arr2 = { rna_translated[i + 1], rna_translated[i + 2] };
-					Condition(arr2, amino_acid, 'u', 'g', 'M');
-					Condition(arr2, amino_acid, 'u', 'a', 'I');
-					Condition(arr2, amino_acid, 'u', 'c', 'I');
-					Condition(arr2, amino_acid, 'u', 'u', 'I');
+					Condition(arr, amino_acid, 'u', 'g', 'M');
+					Condition(arr, amino_acid, 'u', 'a', 'I');
+					Condition(arr, amino_acid, 'u', 'c', 'I');
+					Condition(arr, amino_acid, 'u', 'u', 'I');
 
-					Condition(arr2, amino_acid, 'g', 'g', 'R');
-					Condition(arr2, amino_acid, 'g', 'a', 'R');
-					Condition(arr2, amino_acid, 'g', 'c', 'S');
-					Condition(arr2, amino_acid, 'g', 'u', 'S');
+					Condition(arr, amino_acid, 'g', 'g', 'R');
+					Condition(arr, amino_acid, 'g', 'a', 'R');
+					Condition(arr, amino_acid, 'g', 'c', 'S');
+					Condition(arr, amino_acid, 'g', 'u', 'S');
 
-					Condition(arr2, amino_acid, 'c', 'g', 'T');
-					Condition(arr2, amino_acid, 'c', 'a', 'T');
-					Condition(arr2, amino_acid, 'c', 'c', 'T');
-					Condition(arr2, amino_acid, 'c', 'u', 'T');
+					Condition(arr, amino_acid, 'c', 'g', 'T');
+					Condition(arr, amino_acid, 'c', 'a', 'T');
+					Condition(arr, amino_acid, 'c', 'c', 'T');
+					Condition(arr, amino_acid, 'c', 'u', 'T');
 
-					Condition(arr2, amino_acid, 'a', 'g', 'K');
-					Condition(arr2, amino_acid, 'a', 'a', 'K');
-					Condition(arr2, amino_acid, 'a', 'c', 'N');
-					Condition(arr2, amino_acid, 'a', 'u', 'N');
+					Condition(arr, amino_acid, 'a', 'g', 'K');
+					Condition(arr, amino_acid, 'a', 'a', 'K');
+					Condition(arr, amino_acid, 'a', 'c', 'N');
+					Condition(arr, amino_acid, 'a', 'u', 'N');
 					break;
 				case 'g':
-					char[] arr3 = { rna_translated[i + 1], rna_translated[i + 2] };
-					Condition(arr3, amino_acid, 'u', 'g', 'V');
-					Condition(arr3, amino_acid, 'u', 'a', 'V');
-					Condition(arr3, amino_acid, 'u', 'c', 'V');
-					Condition(arr3, amino_acid, 'u', 'u', 'V');
+					Condition(arr, amino_acid, 'u', 'g', 'V');
+					Condition(arr, amino_acid, 'u', 'a', 'V');
+					Condition(arr, amino_acid, 'u', 'c', 'V');
+					Condition(arr, amino_acid, 'u', 'u', 'V');
 
-					Condition(arr3, amino_acid, 'g', 'g', 'G');
-					Condition(arr3, amino_acid, 'g', 'a', 'G');
-					Condition(arr3, amino_acid, 'g', 'c', 'G');
-					Condition(arr3, amino_acid, 'g', 'u', 'G');
+					Condition(arr, amino_acid, 'g', 'g', 'G');
+					Condition(arr, amino_acid, 'g', 'a', 'G');
+					Condition(arr, amino_acid, 'g', 'c', 'G');
+					Condition(arr, amino_acid, 'g', 'u', 'G');
 
-					Condition(arr3, amino_acid, 'c', 'g', 'A');
-					Condition(arr3, amino_acid, 'c', 'a', 'A');
-					Condition(arr3, amino_acid, 'c', 'c', 'A');
-					Condition(arr3, amino_acid, 'c', 'u', 'A');
+					Condition(arr, amino_acid, 'c', 'g', 'A');
+					Condition(arr, amino_acid, 'c', 'a', 'A');
+					Condition(arr, amino_acid, 'c', 'c', 'A');
+					Condition(arr, amino_acid, 'c', 'u', 'A');
 
-					Condition(arr3, amino_acid, 'a', 'g', 'E');
-					Condition(arr3, amino_acid, 'a', 'a', 'E');
-					Condition(arr3, amino_acid, 'a', 'c', 'D');
-					Condition(arr3, amino_acid, 'a', 'u', 'D');
+					Condition(arr, amino_acid, 'a', 'g', 'E');
+					Condition(arr, amino_acid, 'a', 'a', 'E');
+					Condition(arr, amino_acid, 'a', 'c', 'D');
+					Condition(arr, amino_acid, 'a', 'u', 'D');
 					break;
 				case 'c':
-					char[] arr4 = { rna_translated[i + 1], rna_translated[i + 2] };
-					Condition(arr4, amino_acid, 'u', 'g', 'L');
-					Condition(arr4, amino_acid, 'u', 'a', 'L');
-					Condition(arr4, amino_acid, 'u', 'c', 'L');
-					Condition(arr4, amino_acid, 'u', 'u', 'L');
+					Condition(arr, amino_acid, 'u', 'g', 'L');
+					Condition(arr, amino_acid, 'u', 'a', 'L');
+					Condition(arr, amino_acid, 'u', 'c', 'L');
+					Condition(arr, amino_acid, 'u', 'u', 'L');
 
-					Condition(arr4, amino_acid, 'g', 'g', 'R');
-					Condition(arr4, amino_acid, 'g', 'a', 'R');
-					Condition(arr4, amino_acid, 'g', 'c', 'R');
-					Condition(arr4, amino_acid, 'g', 'u', 'R');
+					Condition(arr, amino_acid, 'g', 'g', 'R');
+					Condition(arr, amino_acid, 'g', 'a', 'R');
+					Condition(arr, amino_acid, 'g', 'c', 'R');
+					Condition(arr, amino_acid, 'g', 'u', 'R');
 
-					Condition(arr4, amino_acid, 'c', 'g', 'P');
-					Condition(arr4, amino_acid, 'c', 'a', 'P');
-					Condition(arr4, amino_acid, 'c', 'c', 'P');
-					Condition(arr4, amino_acid, 'c', 'u', 'P');
+					Condition(arr, amino_acid, 'c', 'g', 'P');
+					Condition(arr, amino_acid, 'c', 'a', 'P');
+					Condition(arr, amino_acid, 'c', 'c', 'P');
+					Condition(arr, amino_acid, 'c', 'u', 'P');
 
-					Condition(arr4, amino_acid, 'a', 'g', 'Q');
-					Condition(arr4, amino_acid, 'a', 'a', 'Q');
-					Condition(arr4, amino_acid, 'a', 'c', 'H');
-					Condition(arr4, amino_acid, 'a', 'u', 'H');
+					Condition(arr, amino_acid, 'a', 'g', 'Q');
+					Condition(arr, amino_acid, 'a', 'a', 'Q');
+					Condition(arr, amino_acid, 'a', 'c', 'H');
+					Condition(arr, amino_acid, 'a', 'u', 'H');
 					break;
 			}
 		}
 		return amino_acid;
 	}
 
-	public static void Condition(char[] nucleotides, List<char> amino_acd, char comparaison1, char comparaison2, char amino_acid)
+	public static void Condition(char[] nucleotide, List<char> amino_acid, char expected_nucleotide1, char expected_nucleotide2, char new_amino_acid)
 	{
-		if (nucleotides[0] == comparaison1)
+		if (nucleotide[0] == expected_nucleotide1)
 		{
-			if (nucleotides[1] == comparaison2)
+			if (nucleotide[1] == expected_nucleotide2)
 			{
-				amino_acd.Add(amino_acid);
+				amino_acid.Add(new_amino_acid);
 			}
 		}
 	}
