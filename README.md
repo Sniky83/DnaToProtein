@@ -1,6 +1,6 @@
 # DnaToProtein
 
-Hi everyone, I coded from scratch a way to extract Protein from Sars-Cov-V2 Genome (the currently epidemic Coronavirus).
+Hi everyone, I coded from scratch a way to extract Protein from SARS-CoV-2 complete Genome (the currently epidemic Coronavirus).
 You could find on the tool the "Program.cs" files which contains all the code.
 
 You will see different methods and these are processes names to transform your DNA to Protein.
