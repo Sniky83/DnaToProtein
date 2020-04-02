@@ -10,3 +10,4 @@ E:\Documents\GitHub\DnaToProtein\DnaToProtein\bin\Debug\DnaToProtein.pdb
 E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.csprojAssemblyReference.cache
 E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.exe
 E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.pdb
+E:\Documents\GitHub\DnaToProtein\DnaToProtein\obj\Debug\DnaToProtein.csproj.CoreCompileInputs.cache

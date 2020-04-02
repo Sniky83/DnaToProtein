@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 
 public class Program
@@ -56,6 +55,7 @@ public class Program
 		Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
 		Console.WriteLine("ORF10 PROTEIN :");
 		Console.WriteLine(ORF10_protein);
+		Console.WriteLine("\nPlease press any key to exit ...");
 		Console.ReadKey();
 	}
 
@@ -81,8 +81,11 @@ public class Program
 					rna_messenger.Add('c');
 					break;
 				default:
-					Console.WriteLine("You have an error in your DNA nucleotides at position : {i} -> '{dna_covid19[i]}' you necessarily have one of these letters : 'A,T,C,G' otherwise it's not DNA.");
-					return rna_messenger;
+					Console.WriteLine($"You have an error in your DNA nucleotides at position : {i} -> '{dna_covid19[i]}' you necessarily have one of these letters : 'A,T,C,G' otherwise it's not DNA.");
+					Console.WriteLine("\nPlease press any key to exit ...");
+					Console.ReadKey();
+					Environment.Exit(0);
+					break;
 			}
 		}
 		return rna_messenger;
